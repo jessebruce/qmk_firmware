@@ -19,7 +19,7 @@ enum layers {
     _WORKMAN = 0,
     _SYMBOLS,
     _ARROWS,
-    _NUMPAD
+    _NUMPAD,
 };
 
 
@@ -34,7 +34,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * | LS/(   |   A  |   S  |   H  |   T  |   G  |                              |   Y  |   N  |   K  |   L  |   |  |  ' "   |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * | LCtrl  |   Z  |   X  |   M  |   C  |   V  | TO1  | TO2  |  | TO3  | TO4  |   K  |   L  | ,  < | . >  | /  ? |  - _   |
+ * | LCtrl  |   Z  |   X  |   M  |   C  |   V  | TO0  | TO1  |  | TO2  | TO3  |   K  |   L  | ,  < | . >  | /  ? |  - _   |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        | Super| Del  | Enter| LT1  | LT2  |  | LT3  | LT2  | Tab  | Bksp | RAlt |
  *                        |      |      | Alt  | Space| Esc  |  | Enter| Space|      |      |      |
@@ -44,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       LT(2,KC_ESC), KC_Q, KC_D, KC_R, KC_W, KC_B,                                              KC_J,  KC_F,  KC_U,  KC_P, KC_SCLN, KC_EQL,
       KC_LSPO,      KC_A, KC_S, KC_H, KC_T, KC_G,                                              KC_Y,  KC_N,  KC_E,  KC_O,  KC_I,  KC_QUOT,
       KC_LCTL,      KC_Z, KC_X, KC_M, KC_C, KC_V, TO(0), TO(1),               TO(2), TO(3), KC_K, KC_L, KC_COMM, KC_DOT, KC_SLSH, KC_MINS,
-      KC_LGUI,    KC_DEL, MT(MOD_LALT,KC_ENT), LT(1,KC_SPC), LT(2,KC_ESC),    LT(3,KC_ENT), LT(2,KC_SPC), KC_TAB, KC_BSPC, KC_RALT),
+      KC_LGUI,    KC_DEL, MT(MOD_LALT,KC_ENT), LT(1,KC_ENT), LT(2,KC_ESC),    LT(3,KC_SPC), LT(2,KC_SPC), KC_TAB, KC_BSPC, KC_RALT),
 
 /*
  * Lower Layer: Symbols
@@ -56,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * |        |  %   |  ^   |  [   |  ]   |  ~   |      |      |  |      |      |   &  |  =   |  ,   |  .   |  / ? | - _    |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |      |      |      |  ;   |  =   |  |  =   |  ;   |      |      |      |
+ *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
@@ -64,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_TRNS, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE,                                     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_BSLS,
       KC_TRNS, KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV,                                      KC_PLUS, KC_MINS, KC_SLSH, KC_ASTR, KC_PERC, KC_QUOT,
       KC_TRNS, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_AMPR, KC_EQL,  KC_COMM, KC_DOT,  KC_SLSH, KC_MINS,
-                        KC_TRNS, KC_TRNS, KC_TRNS, KC_SCLN, KC_EQL,   KC_EQL, KC_SCLN, KC_TRNS, KC_TRNS, KC_TRNS),
+                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
 
 /*
  * Raise Layer: Number keys, media, navigation
@@ -72,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-------------------------------------------.                              ,-------------------------------------------.
  * |        |   1  |  2   |  3   |  4   |  5   |                              |  6   |  7   |  8   |  9   |  0   |        |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |        |      | Prev | Play | Next | VolUp|                              | Home | Down | Up   | Right| PGUp |        |
+ * |        |      | Prev | Play | Next | VolUp|                              | Home | Left | Up   | Right| PGUp |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * |        |      |      |      | Mute | VolDn|      |      |  |      |      | End  |      | Down |      |PGDown|        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
@@ -90,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Adjust Layer: Function keys, RGB
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |  GuiOn |GuiOff| BL-  | BL+  |BL_OFF| BL_ON|                              |      |  7   |  8   |  9   |  +   |   /    |
+ * |        |      |      |      |      |      |                              |      |  7   |  8   |  9   |  +   |   /    |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * |  TOG   | Eff+ | Sat+ | Hue+ | Bri+ | Mode+|                              |      |  4   |  5   |  6   |  -   |   *    |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
@@ -103,10 +103,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
     [_NUMPAD] = LAYOUT(
-      GUI_ON,  GUI_OFF, BL_DEC,  BL_INC,  BL_OFF,  BL_ON,                                        KC_TRNS, KC_P7,   KC_P8,   KC_P9,   KC_PPLS, KC_PSLS,
+      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                      KC_TRNS, KC_P7,   KC_P8,   KC_P9,   KC_PPLS, KC_PSLS,
       RGB_TOG, RGB_SPI, RGB_SAI, RGB_HUI, RGB_VAI, RGB_MOD,                                      KC_TRNS, KC_P4,   KC_P5,   KC_P6,   KC_PMNS, KC_PAST,
       KC_TRNS, RGB_SPD, RGB_SAD, RGB_HUD, RGB_VAD, RGB_RMOD, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_P1,   KC_P2,   KC_P3,   KC_PEQL, KC_PENT,
-                                 RGB_M_P, RGB_M_B, RGB_M_R, RGB_M_SW, RGB_M_SN, RGB_M_K, RGB_M_X, RGB_M_G, KC_P0, KC_PDOT)
+                                 KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_P0,   KC_PDOT)
 // /*
 //  * Layer template
 //  *
@@ -129,13 +129,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //     ),
 };
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-    return update_tri_layer_state(state, _SYMBOLS, _ARROWS, _NUMPAD);
-}
+// layer_state_t layer_state_set_user(layer_state_t state) {
+//     return update_tri_layer_state(state, _SYMBOLS, _ARROWS, _NUMPAD);
+// }
 
 #ifdef OLED_DRIVER_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-	return OLED_ROTATION_180;
+    return OLED_ROTATION_180;
 }
 
 static void render_kyria_logo(void) {
@@ -201,23 +201,23 @@ void oled_task_user(void) {
 }
 #endif
 
-#ifdef ENCODER_ENABLE
-void encoder_update_user(uint8_t index, bool clockwise) {
-    if (index == 0) {
-        // Volume control
-        if (clockwise) {
-            tap_code(KC_VOLU);
-        } else {
-            tap_code(KC_VOLD);
-        }
-    }
-    else if (index == 1) {
-        // Page up/Page down
-        if (clockwise) {
-            tap_code(KC_PGDN);
-        } else {
-            tap_code(KC_PGUP);
-        }
-    }
-}
-#endif
+// #ifdef ENCODER_ENABLE
+// void encoder_update_user(uint8_t index, bool clockwise) {
+//     if (index == 0) {
+//         // Volume control
+//         if (clockwise) {
+//             tap_code(KC_VOLU);
+//         } else {
+//             tap_code(KC_VOLD);
+//         }
+//     }
+//     else if (index == 1) {
+//         // Page up/Page down
+//         if (clockwise) {
+//             tap_code(KC_PGDN);
+//         } else {
+//             tap_code(KC_PGUP);
+//         }
+//     }
+// }
+// #endif
